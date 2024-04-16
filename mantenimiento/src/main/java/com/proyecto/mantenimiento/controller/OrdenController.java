@@ -28,7 +28,7 @@ public class OrdenController {
         return ordenService.ById(id);
     }
 
-    @GetMapping("byNombre/{nombre}")
+    @GetMapping("byNombre")
     public List<OrdenDeTrabajo> byNombre(@RequestParam String nombre){
 
         return ordenRepository.findByNombre(nombre);
