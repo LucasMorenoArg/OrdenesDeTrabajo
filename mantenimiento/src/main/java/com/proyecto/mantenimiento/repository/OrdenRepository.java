@@ -11,7 +11,10 @@ import java.util.List;
 @Repository
 public interface OrdenRepository extends JpaRepository<OrdenDeTrabajo,Integer>{
 
-    @Query(value="SELECT p FROM OrdenDeTrabajo p WHERE p.usuario LIKE %:nombre%")
-    List<OrdenDeTrabajo> findByNombre(@Param("nombre") String nombre);
+    @Query("SELECT p FROM OrdenDeTrabajo p WHERE p.usuario LIKE %:nombre%")
+    List<OrdenDeTrabajo> findByName(@Param("nombre") String nombre);
+
+    @Query("SELECT p FROM OrdenDeTrabajo p WHERE p.estado =:estatus")
+    List<OrdenDeTrabajo> findByStatus(@Param("estatus") String estatus);
 
 }

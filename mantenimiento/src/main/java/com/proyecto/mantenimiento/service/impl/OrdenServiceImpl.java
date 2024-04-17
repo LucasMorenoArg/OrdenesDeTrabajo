@@ -20,7 +20,7 @@ public class OrdenServiceImpl implements OrdenService {
         if (!ordenRepository.findAll().isEmpty()){
             return ordenRepository.findAll();
         } else{
-
+            System.out.println("Sin datos en base");
         }
 
         return null;

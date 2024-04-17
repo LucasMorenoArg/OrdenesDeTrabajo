@@ -5,7 +5,6 @@ import com.proyecto.mantenimiento.repository.OrdenRepository;
 import com.proyecto.mantenimiento.service.impl.OrdenServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -31,7 +30,13 @@ public class OrdenController {
     @GetMapping("byNombre")
     public List<OrdenDeTrabajo> byNombre(@RequestParam String nombre){
 
-        return ordenRepository.findByNombre(nombre);
+        return ordenRepository.findByName(nombre);
+    }
+
+    @GetMapping("")
+    public List<OrdenDeTrabajo> byStatus(@RequestParam String estatus){
+
+        return ordenRepository.findByStatus(estatus);
     }
 
     @PostMapping("create")
@@ -40,10 +45,11 @@ public class OrdenController {
        return ordenService.save(ordenDeTrabajo);
     }
 
-    @PostMapping("update")
-    public Optional<OrdenDeTrabajo> update(@RequestBody OrdenDeTrabajo ordenDeTrabajo, int id ) throws Exception {
+    @PutMapping("update/{id}")
+    public Optional<OrdenDeTrabajo> update(@RequestBody OrdenDeTrabajo ordenDeTrabajo,
+                                           @PathVariable int id) throws Exception {
 
-        return ordenService.update(ordenDeTrabajo, id);
+        return ordenService.update(ordenDeTrabajo,id);
     }
 
     @DeleteMapping("deleteId/{id}")

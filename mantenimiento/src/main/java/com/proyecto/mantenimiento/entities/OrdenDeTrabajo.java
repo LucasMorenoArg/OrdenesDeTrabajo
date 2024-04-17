@@ -2,16 +2,18 @@ package com.proyecto.mantenimiento.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.util.Date;
+import java.time.LocalDate;
 
-@Table(name="ordendetrabajo")
 @Entity
+@Table(name="ordendetrabajo")
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Data
 public class OrdenDeTrabajo {
 
     @Id
@@ -20,7 +22,7 @@ public class OrdenDeTrabajo {
     private String usuario;
     private String fallaTipo;
     private String maquina;
-    private Date fechaSolicitud;
-    private Date fechaCierre;
+    private LocalDate fechaSolicitud;
+    private LocalDate fechaCierre;
     private String estado;
 }
