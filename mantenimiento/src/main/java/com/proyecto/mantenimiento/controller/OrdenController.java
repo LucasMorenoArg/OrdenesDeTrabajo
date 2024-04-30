@@ -4,6 +4,7 @@ import com.proyecto.mantenimiento.entities.OrdenDeTrabajo;
 import com.proyecto.mantenimiento.repository.OrdenRepository;
 import com.proyecto.mantenimiento.service.impl.OrdenServiceImpl;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
@@ -15,8 +16,10 @@ public class OrdenController {
 
     private final OrdenServiceImpl ordenService;
     private final OrdenRepository ordenRepository;
+
+    @SneakyThrows(Exception.class)
     @GetMapping("getAll")
-    public List<OrdenDeTrabajo> getAll() throws Exception {
+    public List<OrdenDeTrabajo> getAll()  {
 
         return ordenService.getAll();
     }
@@ -45,9 +48,10 @@ public class OrdenController {
        return ordenService.save(ordenDeTrabajo);
     }
 
+    @SneakyThrows
     @PutMapping("update/{id}")
     public Optional<OrdenDeTrabajo> update(@RequestBody OrdenDeTrabajo ordenDeTrabajo,
-                                           @PathVariable int id) throws Exception {
+                                           @PathVariable int id)  {
 
         return ordenService.update(ordenDeTrabajo,id);
     }

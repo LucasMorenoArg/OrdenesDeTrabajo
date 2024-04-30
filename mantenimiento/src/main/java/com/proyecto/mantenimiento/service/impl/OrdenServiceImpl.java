@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+
+/**
+ *
+ */
 @Service
 @RequiredArgsConstructor
 public class OrdenServiceImpl implements OrdenService {
@@ -42,14 +46,15 @@ public class OrdenServiceImpl implements OrdenService {
     public Optional<OrdenDeTrabajo> update(OrdenDeTrabajo cliente, Integer id) throws Exception {
 
         try {
-            if (ordenRepository.existsById(id)){
+            if (ordenRepository.existsById(id)) {
                 ordenRepository.save(cliente);
             } else System.out.println("No se pudo completar la operación");
 
             return ordenRepository.findById(id);
-        } catch (Exception e){
-            throw new Exception(e.getMessage());
+        } catch (Exception e) {
+            e.getMessage();
         }
+        return null;
     }
 
     @Override
